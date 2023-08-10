@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Stagiaire extends Model
+{
+    use HasFactory;
+
+    public function branche()
+    {
+        return $this->belongsTo(Branche::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(MatiereNote::class);
+    }
+
+    public function nomComplet()
+    {
+        return $this->nom . ' ' . $this->prenom;
+    }
+}
